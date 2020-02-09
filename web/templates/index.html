@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dog's breed classifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div style="text-align: center;">
+      <h2>Dog's breed classifier</h2>
+      <h3>Upload new File</h3>
+      <form method=post action=upload enctype=multipart/form-data>
+        <input type=file name=file>
+        <input type=submit value='Upload'>
+      </form>
+      {% if error %}
+        <br>
+        <p style="color: red">{{ error }}</p>
+      {% endif %}
+      <br>
+      <p>by Silvio Fragnani da Silva<br>silviofragnanisilva at gmail.com</p>
+    </div>
+  </body>
+</html>
