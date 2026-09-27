@@ -83,13 +83,13 @@ class App:
             baseheight = 680
             hpercent = (baseheight/float(image.size[1]))
             wsize = int((float(image.size[0])*float(hpercent)))
-            image = image.resize((wsize, baseheight), Image.ANTIALIAS)
+            image = image.resize((wsize, baseheight), Image.LANCZOS)
             image.save(img_path)
         else:
             basewidth = 680
             wpercent = (basewidth/float(image.size[0]))
             hsize = int((float(image.size[1])*float(wpercent)))
-            image = image.resize((basewidth,hsize), Image.ANTIALIAS)
+            image = image.resize((basewidth,hsize), Image.LANCZOS)
             image.save(img_path)
         # resize, normlize and transform into tensor
         transform_pipeline = transforms.Compose([
@@ -128,7 +128,7 @@ class App:
             True or False if the image contains a dog
         '''
         # predict dogs using the resnet50
-        resnet50 = models.resnet50(pretrained=True).to(self.device)
+        resnet50 = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1).to(self.device)
         resnet50 = resnet50.eval()
         resnet50 = resnet50(Variable(image))
         # get the max index
@@ -161,7 +161,7 @@ class App:
             model which classifies dog's breed
         '''
         # get base network
-        model = models.vgg19_bn(pretrained=False)
+        model = models.vgg19_bn(weights=None)
         # get the inputs from the last
         n_inputs = model.classifier[6].in_features
         # set the new layer with the amount of classes needed
