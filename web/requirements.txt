@@ -1,6 +1,7 @@
-Flask==1.1.1
-numpy==1.22.0
-werkzeug==0.15.4
-torch==1.4.0
-torchvision==0.5.0
-opencv-python==4.2.0.32
+Flask>=3.0
+werkzeug>=3.0.6
+numpy>=1.26
+pillow>=12.3.0
+torch>=2.2
+torchvision>=0.17
+opencv-python>=4.8.1.78,<5
